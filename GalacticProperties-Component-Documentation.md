@@ -41,8 +41,8 @@
         "domain": [[0, 16], [0, 2]]
       }
 ```
-
-### It's Container and Methods
+The `domain` field above is the range provied for the `tick` marks in the plot. The `[0]` index of `domain` refers to the *x-axis* and the `[1]`  index refers to the *y-axis*.
+### Understanding its container and methods
 
 #### Constructor
 The `constructor` takes in `props` as its only argument. The `this.state` is then initialized with a `data: null` object.
@@ -54,15 +54,15 @@ constructor(props) {
     data: null,
   };
 }
-```
-Afterwards, it runs the the `componentDidMount()` fetching the needed data via JSON and massages it in order to store that in the `data` object in `this.state`.
-```javascript
+
 componentDidMount() {
   const {
     widget: { source, options },
   } = this.props;
   const { multiple } = options || {};
-
+```
+The `componentDidMount()` fetchs the needed data via from the `source` (extracted from the `options` in `this.props`) and massages it down via the `this.getDataObjects(data, multiple)` method in order to store that result in the `data` object in `this.state`.
+```javascript
   API.get(source).then(response => {
     const { data } = response;
     const responseData = this.getDataObjects(data, multiple);
