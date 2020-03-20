@@ -4,11 +4,12 @@
 ```json
 
       "type": "GalacticProperties",
-      "source": "/data/galaxies/hsc/hsc_sub01.json",
+      "source": "/data/galaxies/hsc/hsc_sub01.json", //Location of your plotted points JSON
       "layout": {
         "col": "right",
         "row": "top"
       },
+      "options": {
 ```
 
 #### `options` for **Brightness vs Distance** plot
