@@ -42,9 +42,17 @@
       }
 ```
 The `domain` field above is the range provied for the `tick` marks in the plot. The `[0]` index of `domain` refers to the *x-axis* and the `[1]`  index refers to the *y-axis*.
+
 ### Understanding its container and methods
 
-#### Constructor
+These are the imports in the constructor to start the file.
+```javascript
+import React from 'react';
+import PropTypes from 'prop-types';
+import isArray from 'lodash/isArray';
+import API from '../lib/API.js';
+import GalacticProperties from '../components/charts/galacticProperties/index.jsx';
+```
 The `constructor` takes in `props` as its only argument. The `this.state` is then initialized with a `data: null` object.
 ```javascript
 constructor(props) {
@@ -73,4 +81,74 @@ The `componentDidMount()` fetchs the needed data via from the `source` (extracte
     }));
   });
 }
+```
+This function checks first to see if the `multiple` flag is `true` and if so, runs a map function to return just the `object` array from each of the objects in the array. 
+```javascript
+getDataObjects = (data, multiple) => {
+  if (multiple) {
+    return data.map(targetData => {
+      if (!targetData.objects) return null;
+      return targetData.objects;
+    });
+  }
+```
+Otherwise just returns the `objects` array if it exists. Else, it returns an empty array.
+```javascript
+  return isArray(data.objects) ? data.objects : [];
+};
+```
+This next method is used to handle any responses or interactions from the child. This method is fired from the `selectionCallback` property on the `GalacticProperties` component.
+```javascript
+  userGalacticPropertiesCallback = data => {
+    console.log({ data }); // eslint-disable-line no-console
+  };
+```
+Coming down into the `render()` method, we deconstruct all necessary variables stored/updated in `this.state` and `this.props` to bind into our `GalacticSelector` component.
+```javascript
+  render() {
+    const { data } = this.state;
+    const { options } = this.props;
+    const {
+      title,
+      xAxisLabel,
+      yAxisLabel,
+      xValueAccessor,
+      yValueAccessor,
+      tooltipAccessors,
+      tooltipUnits,
+      tooltipLabels,
+    } = options || {};
+
+```
+In the `GalacticProperties` component, we explicitly inject the lables, accessors, and units, respectively, as well as bind in our callback function.
+```javascript
+    return (
+      <>
+        <h2 className="space-bottom">{title || 'Brightness Vs Distance'}</h2>
+        <GalacticProperties
+          className="brightness-vs-distance"
+          {...{
+            data,
+            options,
+            xAxisLabel,
+            yAxisLabel,
+            xValueAccessor,
+            yValueAccessor,
+            tooltipAccessors,
+            tooltipUnits,
+            tooltipLabels,
+          }}
+          selectionCallback={this.userGalacticPropertiesCallback}
+        />
+      </>
+    );
+  }
+}
+GalacticPropertiesContainer.propTypes = {
+  data: PropTypes.object,
+  options: PropTypes.object,
+  widget: PropTypes.object,
+};
+
+export default GalacticPropertiesContainer;
 ```
