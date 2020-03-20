@@ -1,6 +1,17 @@
 # GalacticProperties Component
 
-#### Example Data structure for **Brightness vs Distance** plot
+### Data Structure to render this component
+```json
+
+      "type": "GalacticProperties",
+      "source": "/data/galaxies/hsc/hsc_sub01.json",
+      "layout": {
+        "col": "right",
+        "row": "top"
+      },
+```
+
+#### `options` for **Brightness vs Distance** plot
 ```json
       "options": {
         "title": "Brightness Vs Distance",
@@ -15,7 +26,7 @@
       }
 ```
 
-#### Example Data structure for **Color vs Distance** plot
+#### `options` for **Color vs Distance** plot
 ```json
       "options": {
         "title": "Color Vs Distance",
