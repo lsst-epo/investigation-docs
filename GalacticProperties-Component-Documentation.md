@@ -1,7 +1,7 @@
 # GalacticProperties Component
 
 #### Available `Options`
-`
+`<pre>
     "options": {
       "title": "Color Vs Distance",
       "xAxisLabel": "Distance (Billion Ly)",
@@ -13,4 +13,4 @@
       "tooltipLabels": ["Distance", "Color"],
       "domain": [[0, 16], [0, 2]]
     }
-`
+</pre>`
