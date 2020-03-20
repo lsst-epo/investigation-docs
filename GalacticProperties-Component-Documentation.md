@@ -1,10 +1,10 @@
 # GalacticProperties Component
 
-### Data Structure to render this component
+### Data structure to render this Component
 ```json
 
       "type": "GalacticProperties",
-      "source": "/data/galaxies/hsc/hsc_sub01.json", //Location of your plotted points JSON
+      "source": "/data/galaxies/hsc/hsc_sub01.json",
       "layout": {
         "col": "right",
         "row": "top"
@@ -40,4 +40,37 @@
         "tooltipLabels": ["Distance", "Color"],
         "domain": [[0, 16], [0, 2]]
       }
+```
+
+### It's Container and Methods
+
+#### Constructor
+The `constructor` takes in `props` as its only argument. The `this.state` is then initialized with a `data: null` object.
+```javascript
+constructor(props) {
+  super(props);
+
+  this.state = {
+    data: null,
+  };
+}
+```
+Afterwards, it runs the the `componentDidMount()` fetching the needed data via JSON and massages it in order to store that in the `data` object in `this.state`.
+```javascript
+componentDidMount() {
+  const {
+    widget: { source, options },
+  } = this.props;
+  const { multiple } = options || {};
+
+  API.get(source).then(response => {
+    const { data } = response;
+    const responseData = this.getDataObjects(data, multiple);
+
+    this.setState(prevState => ({
+      ...prevState,
+      data: responseData,
+    }));
+  });
+}
 ```
