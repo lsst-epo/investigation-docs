@@ -6,7 +6,7 @@ The use of this widget is to display both Color vs Distance and Brightness vs Di
 The use of a basic plotter helps to better differentiate the fact that although the object being viewed may be brighter does not necessarily mean the object is closer to us, but the color of the object also defines the distance. This widgets is currently only used in the Exploring the Observable Universe Investigation.
 
 
-[[/images/galacticPropertiesComboContainer.gif|Galactic Properties Combo Container Widget]]
+[[/images/galacticPropertiesComboContainer.gif]]
 
 ## Page Data
 
