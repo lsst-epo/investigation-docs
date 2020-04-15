@@ -45,7 +45,7 @@
       }
 ```
 
-The `domain` field above is the range provied for the `tick` marks in the plot. The `[0]` index of `domain` refers to the _x-axis_ and the `[1]` index refers to the _y-axis_.
+The `domain` field above is the range provide for the `tick` marks in the plot. The `[0]` index of `domain` refers to the _x-axis_ and the `[1]` index refers to the _y-axis_.
 
 ### Understanding its container and methods
 
@@ -77,7 +77,7 @@ componentDidMount() {
   const { multiple } = options || {};
 ```
 
-The `componentDidMount()` fetchs the needed data via from the `source` (extracted from the `options` in `this.props`) and massages it down via the `this.getDataObjects(data, multiple)` method in order to store that result in the `data` object in `this.state`.
+The `componentDidMount()` fetches the needed data via from the `source` (extracted from the `options` in `this.props`) and massages it down via the `this.getDataObjects(data, multiple)` method in order to store that result in the `data` object in `this.state`.
 
 ```javascript
   API.get(source).then(response => {
@@ -143,7 +143,7 @@ Coming down into the `render()` method, we deconstruct all necessary variables s
           className="brightness-vs-distance"
 ```
 
-In the `<GalacticProperties>` component are explicitly inject the lables, accessors, and units, respectively. Additionally, the callback function `this.userGalacticPropertiesCallback` is bound into the `selectionCallback` prop.
+In the `<GalacticProperties>` component are explicitly inject the labels, accessors, and units, respectively. Additionally, the callback function `this.userGalacticPropertiesCallback` is bound into the `selectionCallback` prop.
 
 ```javascript
           {...{
@@ -170,7 +170,7 @@ Additionally, the callback function `this.userGalacticPropertiesCallback` is bou
 }
 ```
 
-Declaring the props that will be injected into this component is essential as this is how the file is _type scripted_ / _type decalared_.
+Declaring the props that will be injected into this component is essential as this is how the file is _type scripted_ / _type declared_.
 
 ```javascript
 GalacticPropertiesContainer.propTypes = {
